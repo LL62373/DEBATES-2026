@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Torneo Interno de Debates 2026 — FENADECO UDENAR</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* 01 · Definición de la Paleta de Colores Oficial del CES */
+  :root {
+    --navy: #1E2B5E;       /* Azul Institución: Principal */
+    --navy-dark: #131D45;  /* Azul Profundo: Fondos oscuros */
+    --cyan: #2E9AC4;       /* Cian Análisis: Acento y CTAs */
+    --cyan-pale: #A8DDEF;  /* Niebla Cian: Fondos suaves */
+    --steel: #5B7FA8;      /* Acero: Texto secundario */
+    --white: #FFFFFF;
+    --cloud: #EEF4F8;      /* Neblina: Fondos alternos */
+    --gold: #C8A84B;       /* Dorado Distinción: Énfasis especial */
+    
+    /* 04 · Escala de Espaciado (múltiplos de 4px) */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 64px;
+    --space-4xl: 96px;
+
+    /* 08 · Tokens de Animación */
+    --ease-standard: 200ms ease-in-out; /* */
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  /* Definición de la tipografía base: DM Sans */
+  body { 
+    font-family: 'DM Sans', sans-serif; 
+    background-color: var(--white); 
+    color: var(--navy); 
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* --- Estilos Generales de Tipografía --- */
+  
+  /* Títulos principales: Playfair Display */
+  .display-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+
+  /* Subtítulos de sección: Playfair Display Bold */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--navy);
+    font-size: clamp(28px, 5vw, 40px);
+    margin-bottom: var(--space-sm);
+  }
+
+  /* Etiquetas técnicas y cejas: DM Mono */
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: var(--space-sm);
+    display: block;
+  }
+
+  /* --- HÉROE / PORTADA --- */
+  .hero {
+    background-color: var(--navy-dark);
+    /* 06 · Patrón de Cuadrícula de Datos oficial */
+    background-image: 
+      linear-gradient(rgba(46,154,196,0.08) 1px, transparent 1px), 
+      linear-gradient(90deg, rgba(46,154,196,0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    color: var(--white);
+    padding: var(--space-xl) var(--space-lg);
+    text-align: center;
+    position: relative;
+  }
+
+  /* Cabecera de marca actualizada para FENADECO */
+  .brand-header {
+    margin-bottom: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+  .brand-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--white);
+  }
+  .brand-separator {
+    height: 1px;
+    width: 250px; /* Un poco más ancha para el texto largo */
+    background-color: var(--white);
+    opacity: 0.3;
+    margin: var(--space-xs) 0;
+  }
+  .brand-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .hero-title {
+    font-size: clamp(40px, 8vw, 72px);
+    max-width: 800px;
+    margin: 0 auto var(--space-md) auto;
+  }
+  .hero-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(16px, 3vw, 20px);
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: var(--space-2xl);
+  }
+
+  /* 05 · Botón Primario con color de acento Dorado para distinción */
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-md) var(--space-2xl);
+    background-color: var(--gold);
+    color: var(--navy-dark);
+    text-decoration: none;
+    border-radius: 8px; /* 04 · Radio de borde estándar */
+    font-weight: 600;
+    font-size: 15px;
+    transition: transform var(--ease-standard), background-color var(--ease-standard);
+  }
+  .btn-gold:hover {
+    background-color: #D9BE6B; /* Variación suave del dorado */
+    transform: translateY(-2px);
+  }
+
+  /* --- DETALLES DEL EVENTO --- */
+  .details {
+    padding: var(--space-4xl) var(--space-lg);
+    background-color: var(--cloud);
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .grid-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-3xl);
+  }
+
+  /* 05 · Tarjeta de publicación (adaptada para info) */
+  .info-card {
+    background: var(--white);
+    padding: var(--space-xl);
+    border-radius: 16px; /* 04 · Radio de borde grande */
+    box-shadow: 0 4px 20px rgba(30,43,94,0.08); /* 06 · Elevación Nivel 3 */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .info-card-icon {
+    font-size: 32px;
+    margin-bottom: var(--space-sm);
+    color: var(--cyan);
+  }
+  .info-card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--steel);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .info-card-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .highlight {
+    color: var(--cyan);
+    font-weight: 700;
+  }
+
+  /* --- LLAMADO A LA ACCIÓN --- */
+  .cta {
+    padding: var(--space-4xl) var(--space-lg);
+    text-align: center;
+    background-color: var(--white);
+    position: relative;
+  }
+  /* 06 · Patrón de Líneas Diagonales oficial */
+  .cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
+    background-image: repeating-linear-gradient(45deg, var(--cyan-pale) 0px, var(--cyan-pale) 1px, transparent 1px, transparent 10px);
+  }
+  .cta-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* 05 · Botón Secundario (Cian) */
+  .btn-cyan {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-2xl);
+    background-color: var(--cyan);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: var(--space-lg);
+    transition: background-color var(--ease-standard);
+  }
+  .btn-cyan:hover {
+    background-color: var(--navy);
+  }
+
+  /* --- FOOTER --- */
+  /* Basado en el footer oficial del Manual CES */
+  .brand-footer {
+    background-color: var(--navy-dark);
+    padding: var(--space-2xl) var(--space-lg);
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+  }
+  .brand-footer strong {
+    color: var(--cyan);
+    font-weight: 500;
+  }
+  .brand-footer .contact-info {
+    margin-top: var(--space-md);
+    color: var(--steel);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 600px) {
+    .hero { padding: var(--space-3xl) var(--space-md); }
+    .details { padding: var(--space-3xl) var(--space-md); }
+    .cta { padding: var(--space-3xl) var(--space-md); }
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="brand-header">
+      <img src="logo.png" alt="FENADECO Logo" style="height: 420px; width: auto;">
+    </div>
+
+    <p class="eyebrow">Universidad de Nariño · Programa de Economía</p>
+    <h1 class="display-title hero-title">Torneo Interno de Debates 2026</h1>
+    <p class="hero-subtitle">Formato: Karl Popper</p>
+    
+    <a href="#inscripcion" class="btn-gold">Inscribir mi equipo</a>
+  </header>
+
+  <section class="details">
+    <div class="container">
+      <span class="eyebrow">Lineamientos</span>
+      <h2 class="section-title">Convocatoria Oficial</h2>
+      <p style="color: var(--steel); max-width: 600px; font-size: 17px;">
+        Invitamos a todos los estudiantes del programa a participar en esta jornada de análisis técnico y argumentación sobre los retos del desarrollo sostenible.
+      </p>
+
+      <div class="grid-details">
+        <div class="info-card">
+          <div class="info-card-icon">🎯</div>
+          <span class="info-card-label">Temática</span>
+          <span class="info-card-value">ODS 8: Trabajo decente y crecimiento económico</span>
+        </div>
+
+        <div class="info-card" style="border-left: 4px solid var(--gold);">
+          <div class="info-card-icon">🏆</div>
+          <span class="info-card-label">Incentivo</span>
+          <span class="info-card-value">El equipo ganador representará al programa en el <span class="highlight">Torneo Regional de Debates</span>.</span>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-icon">⏰</div>
+          <span class="info-card-label">Cierre de Inscripciones</span>
+          <span class="info-card-value highlight">Hasta el 6 de marzo de 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="inscripcion" class="cta">
+    <div class="cta-content">
+      <span class="eyebrow">Participación</span>
+      <h2 class="section-title">Asegura tu cupo</h2>
+      <p style="color: var(--navy); font-size: 16px;">
+        Diligencia el formulario oficial de Microsoft Forms para registrar a tu equipo. No pierdas la oportunidad de potenciar tus habilidades analíticas.
+      </p>
+      
+      <a href="https://forms.office.com/r/VJwgkgj0qB" target="_blank" class="btn-cyan">
+        <span>🔗</span> Formulario de Inscripción
+      </a>
+    </div>
+  </section>
+
+  <footer class="brand-footer">
+    <strong>FENADECO</strong> &nbsp;·&nbsp; Federación Nacional de Estudiantes de Economía<br>
+    Universidad de Nariño<br>
+    <div class="contact-info">
+      Organizan: Delegados de FENADECO – Capítulo Udenar.<br>
+      📞 Más información: 311 741 5439
+    </div>
+  </footer>
+
+</body>
+</html>
